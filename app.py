@@ -4,7 +4,7 @@ from PIL import Image, ExifTags
 import numpy as np
 import cv2
 from werkzeug.utils import secure_filename
-from inference_sdk import InferenceHTTPClient
+# from inference_sdk import InferenceHTTPClient
 from ultralytics import YOLO
 
 app = Flask(__name__)
@@ -48,7 +48,7 @@ def index():
                 cl = clahe.apply(l)
                 merged = cv2.merge((cl, a, b))
                 final_img = cv2.cvtColor(merged, cv2.COLOR_LAB2BGR)
-                model = YOLO('library/69-best.pt')
+                model = YOLO('library/best.pt')
                 results = model(final_img)  # Predict
                 if results:
                     # Save prediction image
