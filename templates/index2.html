@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Know Your Snake</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-green-50 min-h-screen flex flex-col justify-center items-center p-4">
+  
+  <!-- Hero Section -->
+  <div class="text-center mb-8">
+    <h1 class="text-4xl font-bold text-green-900">Know Your Snake</h1>
+    <p class="text-lg text-green-700 mt-2">Upload an image and let AI identify the species in seconds!</p>
+  </div>
+
+  <!-- Upload Interface -->
+  <form method="POST" enctype="multipart/form-data" class="bg-white p-6 rounded-xl shadow-md w-full max-w-lg">
+    <label for="image" class="block w-full border-2 border-dashed border-green-400 p-8 text-center rounded-lg cursor-pointer hover:bg-green-50 transition">
+      <div class="flex flex-col items-center">
+        <span class="text-4xl">🐍</span>
+        <span class="mt-2 text-green-600 font-medium">Drag & drop or click to upload a snake image</span>
+        <span class="text-sm text-gray-400 mt-1">(JPG, PNG only)</span>
+      </div>
+      <input type="file" name="image" id="image" accept="image/*" class="hidden" onchange="this.form.submit()">
+    </label>
+  </form>
+
+  <!-- Image Preview -->
+  {% if image_url %}
+  <div class="mt-6">
+    <h2 class="text-xl font-semibold mb-2 text-green-800">Uploaded Image Preview:</h2>
+    <img src="{{ image_url }}" alt="Uploaded Snake" class="max-w-xs rounded-lg shadow-lg">
+  </div>
+  {% endif %}
+
+</body>
+</html>
